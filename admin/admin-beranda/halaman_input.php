@@ -80,21 +80,21 @@
 	  <div class="mb-3 row">
 	    <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="deskripsi" value="<?php echo $deskripsi ?>" name="deskripsi">
+	      <input type="text" class="form-control summernote" id="deskripsi" value="<?php echo $deskripsi ?>" name="deskripsi">
 	    </div>
 	  </div>
 
 	  <div class="mb-3 row">
 	    <label for="visi" class="col-sm-2 col-form-label">Visi</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="visi" value="<?php echo $visi ?>" name="visi">
+	      <input type="text" class="form-control summernote" id="visi" value="<?php echo $visi ?>" name="visi">
 	    </div>
 	  </div>
 
 	  <div class="mb-3 row">
 	    <label for="misi" class="col-sm-2 col-form-label">Misi</label>
 	    <div class="col-sm-10">
-	      <textarea name="misi" class="form-control" id="summernote"><?php echo $misi ?></textarea>
+	      <textarea name="misi" class="form-control summernote" id="misi"><?php echo $misi ?></textarea>
 	    </div>
 	  </div>
 
