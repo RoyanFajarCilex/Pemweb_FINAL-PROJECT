@@ -1,3 +1,4 @@
+<?php require("admin/inc/inc_koneksi.php") ?>
 <!doctype html>
 <html lang="en">
   <head>
