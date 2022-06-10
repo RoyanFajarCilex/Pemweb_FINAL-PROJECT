@@ -8,7 +8,7 @@
 	<!-- Editor WYSIWYG menggunakan summernote -->
 	<script>
 		$(document).ready(function() {
-			$('#summernote').summernote({
+			$('.summernote').summernote({
 				callbacks: {	//ketika di callback akan memasukan data-data (spt gambar/video)
 		            onImageUpload: function(files) {
 		                for(let i=0; i < files.length; i++) {
