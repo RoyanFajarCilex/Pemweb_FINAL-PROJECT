@@ -1,4 +1,4 @@
-<?php include("inc_header.php") ?>
+<?php include("../inc/inc_header.php") ?>
 
 		<!-- LIVE SEARCH -->
 		<?php 
@@ -37,7 +37,7 @@
 		 ?>
 		 <!-- END DELETE LOGIC -->
 
-		<h1>Halaman Admin</h1>
+		<h1>Halaman Admin Beranda</h1>
 		<p>
 			<a href="halaman_input.php">
 				<input type="button" class="btn-primary" value="Buat Halaman Baru"/>
@@ -69,14 +69,14 @@
 
 					// LIVE SEARCH
 					$querytambahan = "";
-					if ($katakunci != '') {		
-						$array_katakunci = explode(" ", $katakunci);	//dapat memasukan 2 kata atau lebih
-						for ($i=0; $i < count($array_katakunci) ; $i++) { 
-							$querycari[] = "(judul LIKE '%".$array_katakunci[$i]."%' or kutipan LIKE '%".$array_katakunci[$i]."%' or isi LIKE '%".$array_katakunci[$i]."%')";
-						}
+					// if ($katakunci != '') {		
+					// 	$array_katakunci = explode(" ", $katakunci);	//dapat memasukan 2 kata atau lebih
+					// 	for ($i=0; $i < count($array_katakunci) ; $i++) { 
+					// 		$querycari[] = "(judul LIKE '%".$array_katakunci[$i]."%' or kutipan LIKE '%".$array_katakunci[$i]."%' or isi LIKE '%".$array_katakunci[$i]."%')";
+					// 	}
 
-						$querytambahan = "where".implode((" or "), $querycari);
-					} // END LIVE SEARCH
+					// 	$querytambahan = "where".implode((" or "), $querycari);
+					// } // END LIVE SEARCH
 
 					// QUERY DATA KE TABEL
 					$query = "SELECT * FROM halaman $querytambahan ORDER BY id DESC";
@@ -89,7 +89,9 @@
 							<td><?php echo $number++ ?></td>
 							<td><?php echo $data['deskripsi'] ?></td>
 							<td><?php echo $data['visi'] ?></td>
-							<td><?php echo preg_replace('/[^a-zA-Z0-9\s]/', ' ', strip_tags(html_entity_decode($data['misi']))); ?></td>
+							<td><?php echo $data['misi'] ?></td>
+							<!-- <td><?php //echo $data['artikel_1'] ?></td>
+							<td><?php //echo $data['artikel_2'] ?></td> -->
 							<td>
 								<a href="halaman.php?op=delete&id=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin ?')"> 
 									<span class="badge bg-danger">Hapus</span>
@@ -105,4 +107,4 @@
 				 ?>
 			</tbody>
 		</table>
-		<?php include("inc_footer.php") ?>
+		<?php include("../inc/inc_footer.php") ?>

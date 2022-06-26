@@ -1,6 +1,9 @@
-<?php
-session_start();
+<?php  
+  session_start();
+  require_once("admin/inc/inc_koneksi.php");
+  require_once("admin/inc/inc_function.php");
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,20 +30,10 @@ session_start();
             class="site-logo" src="images/LOGO.png"></a>
           </div>
           <div class="acc">
-                  <?php
-                        if(!isset ($_SESSION["login"])){
-                          echo  '<b><a style= "text-decoration: none" href="0-masuk.php"><span>Masuk</span></a></b>
-                          <b><a style= "text-decoration: none" href="0-daftar.php"><span>Daftar</span></a></b>';
-                        }
-                  ?>
-                  <?php
-                        if(isset ($_SESSION["login"])){
-                          echo '<b><a style= "text-decoration: none" href="logout.php"><span>Keluar</span></a></b>';
-                          echo "selamat datang, ";
-                          echo $_SESSION["userweb"];
-                        }
-                  ?>
+                  <b><a style= "text-decoration: none" href="0-masuk.php"><span>Masuk</span></a></b>
+                  <b><a style= "text-decoration: none" href="0-daftar.php"><span>Daftar</span></a></b>
                 </div>
+
           <div class="col-12 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
 
@@ -48,7 +41,7 @@ session_start();
                 <li class="active"><a href="1-beranda.php"><span>Beranda</span></a></li>
                 <li><a href="2-kegiatan.php"><span>Kegiatan Desa</span></a></li>
                 <li class="has-children">
-                  <a href="3-0-datadesa.php"><span>Data Desa</span></a>
+                  <a><span>Data Desa</span></a>
                   <ul class="dropdown arrow-top">
                     <li><a href="3-1-struktur.php">Pemerintahan Desa</a></li>
                     <li><a href="3-2-statistik.php">Statistik Penduduk</a></li>
@@ -96,7 +89,7 @@ session_start();
         <h3>Kec. Bumiaji, Kota Batu, Jawa Timur</h3>
   
         <div class="isi">
-        Sumber Brantas adalah sebuah kelurahan di wilayah Kecamatan Bumiaji, Kota Batu, Provinsi Jawa Timur. Di desa ini terdapat mata air Sungai Brantas yang merupakan sungai terpanjang kedua di Pulau Jawa setelah Bengawan Solo. Mata air tersebut terletak di lereng Gunung Arjuno dan kawasan Taman Hutan Raya Raden Soerjo dimana di dalamnya juga terdapat bumi perkemahan dan pemandian air panas Cangar. Di sekitar mata air panas Cangar terdapat gua-gua buatan yang dibangun pada masa pendudukan Jepang. Pertanian hortikultura merupakan hasil utama dari desa ini. 
+        <?= ambil_deskripsi('12'); ?>
         </div>
     </div>
 
@@ -105,19 +98,9 @@ session_start();
   <div class="visimisi" style="width: 800px ; float: left ; margin-left: 0%">
     <h1>VISI DAN MISI</h1>
     <br><b>VISI</b>
-    <br>“DENGAN SEMANGAT PERSAUDARAAN, GOTONG ROYONG DAN AKHLAK MULIA GUNA MEWUJUDKAN DESA SUMBER BRANTAS YANG LUAR BIASA”.
-    <br>
+    <?= ambil_visi('12'); ?>
     <b><br>MISI</b>
-    <br>Untuk mewujudkan Visi, Misi yang akan dilakukan adalah sebagai berikut :
-    Melanjutkan program yang telah dilaksanakan dan memelihara program-program yang sudah dilaksanakan oleh pemerintah Desa Sumber Brantas periode yang lalu sesuai dengan fungsinya.
-    Menggali, memberdayakan serta memaksimalkan semua potensi yang ada di masyarakat, meliputi :
-    <li>Pemberdayaan Sumber Daya Manusia (SDM)</li>
-    <li>Sumber Daya Alam (SDA)</li>
-    <li>Pemberdayaan Ekonomi Kerakyatan</li>
-    <br>Menciptakan kondisi masyarakat Desa Sumber Brantas yang aman, tertib, guyub dan rukun dalam kehidupan bermasyarakat. Optimalisasi penyelenggaraan pemerintah Desa Sumber Brantas yang meliputi :
-    <li>Penyelenggaraan pemerintahan yang Tertib dan Transparan</li>
-    <li>Pelayanan kepada masyarakat yang prima, yaitu : Cepat, Tepat dan Benar</li>
-    <li>Pelaksanaan pembangunan yang berkesinambungan dan mengedepankan partisipasi dan gotong royong masyarakat.</li>
+    <?= ambil_misi('12'); ?>
   </div>
 
   
@@ -145,100 +128,5 @@ session_start();
 </div>
 
 </div>
-      
- 
-
-  <div style="margin-top:90%">
-  <footer class="text-center text-lg-start bg-dark text-muted">
-
-  <section
-    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-  </section>
-
-  <section class="">
-    <div class="container text-left text-md-start mt-5">
-      
-      <div class="row mt-3">
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>DESA SUMBER BRANTAS
-          </h6>
-          <p>
-          Sumber Brantas, Kecamatan Bumiaji, Kota Batu, Provinsi Jawa Timur, Kode Pos 65336.
-          </p>
-        </div>
-
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-          <h6 class="text-uppercase fw-bold mb-4">
-            Menu Utama
-          </h6>
-          <p>
-            <a href="1-beranda.php" class="text-reset">Beranda</a>
-          </p>
-          <p>
-            <a href="2-kegiatan.php" class="text-reset">Kegiatan</a>
-          </p>
-          <p>
-            <a href="3-0-datadesa.php" class="text-reset">Data Desa</a>
-          </p>
-          <p>
-            <a href="4-berita.php" class="text-reset">Berita Terkini</a>
-          </p>
-          <p>
-            <a href="5-surat.php" class="text-reset">Layanan Surat</a>
-          </p>
-        </div>
-     
-
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-          <h6 class="text-uppercase fw-bold mb-4">
-            Info Terbaru
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Pembagian RASKIN</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Persiapan Idul Adha</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Perbaruan Data Desa</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Realisasi APB Desa Tahun 2022</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Pelantikan Anggota BPD</a>
-          </p>
-        </div>
-  
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-          <h6 class="text-uppercase fw-bold mb-4">
-            Hubungi Kami
-          </h6>
-          <p><i class="fas fa-home me-3"></i>Jl. Raya Sumber Brantas No.120-124</p>
-          <p>
-            <i class="fas fa-envelope me-3"></i>
-            desanet@sumberbrantas.id
-          <p><i class="fas fa-phone me-3"></i> WhatsApp +62 896 0337 8809</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2022 Copyright:
-    <a class="text-reset fw-bold" href="1-beranda.php">Desanet.com</a>
-  </div>
-</footer>
-
-  </div>
-
-</body>
-  <script src="js/bootstrap.js"></script>
-</html>
+<div style="margin-top:70%">
+<?php include("template/footer.php")?>

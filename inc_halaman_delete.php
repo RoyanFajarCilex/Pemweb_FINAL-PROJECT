@@ -1,6 +1,6 @@
 <?php
 
-include("inc_koneksi.php");
+include("../inc/inc_koneksi.php");
 
 $result = '';
 
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             echo "
 		        <script>
 		            alert('data berhasil dihapus!');
-		            document.location.href = 'halaman_admin.php';
+		            document.location.href = '../admin.php';
 				</script>
 				";
         } else {

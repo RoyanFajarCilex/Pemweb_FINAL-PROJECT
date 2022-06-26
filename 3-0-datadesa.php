@@ -35,7 +35,7 @@
                 <li><a href="1-beranda.php"><span>Beranda</span></a></li>
                 <li><a href="2-kegiatan.php"><span>Kegiatan Desa</span></a></li>
                 <li class="has-children active">
-                  <span>Data Desa</span>
+                  <a href="1-beranda.php"><span>Data Desa</span></a>
                   <ul class="dropdown arrow-top">
                     <li><a href="3-1-struktur.php">Pemerintahan Desa</a></li>
                     <li><a href="3-2-statistik.php">Statistik Penduduk</a></li>
@@ -52,4 +52,4 @@
 
           </body>
   <script src="js/bootstrap.js"></script>
-</html>          
+</html>

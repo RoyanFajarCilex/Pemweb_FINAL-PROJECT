@@ -1,6 +1,6 @@
 <?php  
   session_start();
-  include_once ("koneksi.php");
+  require_once("admin/inc/inc_koneksi.php");
   $status = '';
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -11,8 +11,8 @@
         $password = $_POST['formpass'];
         $query = "INSERT INTO signupform (nama_user, tanggal_lahir, tempat_lahir) VALUES('$nama', '$tanggal', '$tempat')";
         $query2 = "INSERT INTO loginform (username, password) VALUES('$username', md5('$password'))";
-        $result = mysqli_query(koneksi(), $query);
-        $result2 = mysqli_query(koneksi(), $query2);
+        $result = mysqli_query(connection_2(), $query);
+        $result2 = mysqli_query(connection_2(), $query2);
         if($result&&$result2) {
             $status = 'ok';
         }

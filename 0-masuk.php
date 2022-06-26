@@ -1,12 +1,6 @@
 <?php  
   session_start();
-  include_once ("koneksi.php");
-
-  if(isset ($_SESSION["login"])){
-    header("location: 1-beranda.php");
-    exit;
-  }
-
+  require_once("admin/inc/inc_koneksi.php");
 ?>
 
 <!DOCTYPE html>
@@ -42,12 +36,11 @@
     if (isset($_POST['formmasuk'])) {
       $username = $_POST['formuser'];
       $password = $_POST['formpass'];
-      $qry = mysqli_query(koneksi(), "SELECT * FROM loginform WHERE username = '$username' AND password = md5('$password')");
+      $qry = mysqli_query(connection_2(), "SELECT * FROM loginform WHERE username = '$username' AND password = md5('$password')");
       $cek = mysqli_num_rows($qry);
         if ($cek==1) {
-          $_SESSION["login"] = true;
           $_SESSION['userweb']=$username;
-          header("location: 1-beranda.php");
+          header("location: index.php");
           exit;
         }
         else{

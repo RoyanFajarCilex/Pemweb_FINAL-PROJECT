@@ -1,118 +1,227 @@
+<?php  
+  session_start();
+  require_once("admin/inc/inc_koneksi.php");
+  require_once("admin/inc/inc_function.php");
+?>
+
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-
     <link rel="stylesheet" href="css-desanet/fonts/style.css">
-
     <link rel="stylesheet" href="css-desanet/owl.carousel.min.css">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css-desanet/bootstrap.min.css">
-    
-    <!-- Style -->
-    <link rel="stylesheet" href="css-desanet/styleblog.css">
+    <link rel="stylesheet" href="css-desanet/1-beranda.css">
+    <title>Website Resmi Desa Sumber Brantas - Desanet.com</title>
+</head>
 
-    <title>Blog DESANET</title>
-  </head>
-  <body>
-
-    <header class="site-navbar" role="banner">
+<body>
+  <header class="site-navbar" role="banner">
 
       <div class="container">
         <div class="row align-items-center">
           
           <div class="col-11 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0">DESANET</a></h1>
+            <a href="1-beranda.php"><img 
+            class="site-logo" src="images/LOGO.png"></a>
           </div>
+          <div class="acc">
+                  <b><a style= "text-decoration: none" href="0-masuk.php"><span>Masuk</span></a></b>
+                  <b><a style= "text-decoration: none" href="0-daftar.php"><span>Daftar</span></a></b>
+                </div>
+
           <div class="col-12 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="index.php"><span>Home</span></a></li>
+                <li class="active"><a href="1-beranda.php"><span>Beranda</span></a></li>
+                <li><a href="2-kegiatan.php"><span>Kegiatan Desa</span></a></li>
                 <li class="has-children">
-                  <a href="event.html"><span>Program</span></a>
+                  <a href="3-0-datadesa.php"><span>Data Desa</span></a>
                   <ul class="dropdown arrow-top">
-                    <li><a href="#">Mingguan</a></li>
-                    <li><a href="#">Bulanan</a></li>
-                    <li><a href="#">Tahunan</a></li>
-                    <li class="has-children">
-                      <a href="#">Dropdown</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Menu One</a></li>
-                        <li><a href="#">Menu Two</a></li>
-                        <li><a href="#">Menu Three</a></li>
-                        <li><a href="#">Menu Four</a></li>
-                      </ul>
-                    </li>
+                    <li><a href="3-1-struktur.php">Pemerintahan Desa</a></li>
+                    <li><a href="3-2-statistik.php">Statistik Penduduk</a></li>
+                    <li><a href="3-3-program.php">Sinergi Program</a></li>
                   </ul>
                 </li>
-                <li><a href="Tentang.php"><span>Tentang</span></a></li>
-                <li class="active"><a href="blog.php"><span>Blog</span></a></li>
-                <li><a href="contact.html"><span>Kontak</span></a></li>
-                <li><a href="login.php"><span>Log Out</span></a></li>
-                <li><a href="login.php"><span>Log In</span></a></li>
+                <li><a href="4-berita.php"><span>Berita Terkini</span></a></li>
+                <li><a href="5-surat.php"><span>Layanan Surat</span></a></li>
+                
               </ul>
             </nav>
           </div>
-        </div>
-      </div>
-      
-    </header>
+  </header>
 
-    <div class="hero" style="background-image: url('images/desa4.jpg');"></div>
-
-
-<div class="container">
-    <div class="row col-md-12 ">
-        <div class="card" style="width: 18rem;">
-            <img src="images/desa1.jpg" class="card-img-top" alt="foto pesona desa">
-            <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <!-- <img src="images/desa1.jpg" alt="..." class="rounded"> -->
-            <img src="images/desa1.jpg" class="card-img-top" alt="foto pesona desa">
-            <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
+  <div class="allcontent">
+        
+    <div class="section-image" style=" width:700px ; float:left">
+      <img class="mySlides" src="images/1.png" style="width:100%">
+      <img class="mySlides" src="images/2.jpg" style="width:100%">
+      <img class="mySlides" src="images/3.jpg" style="width:100%">
+      <img class="mySlides" src="images/4.jpg" style="width:100%">
+      <img class="mySlides" src="images/5.jpg" style="width:100%">
     </div>
+          
+          <script>
+          var myIndex = 0;
+          carousel();
+          
+          function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+              x[i].style.display = "none";  
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}    
+            x[myIndex-1].style.display = "block";  
+            setTimeout(carousel, 2000); 
+          }
+          </script> 
 
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-        <img src="images/desa1.jpg" class="card-img-right" alt="foto pesona desa">
-          <strong class="d-inline-block mb-2 text-success">Berita Terkini</strong>
-          <h3 class="mb-0">Anak Ayam Pak RT Hilang</h3>
-          <div class="mb-1 text-muted">Juni 12</div>
-          <p class="mb-auto">Diduga pelaku kejahatan memiliki dendam terhadap Pak RT karena tidak RW.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-      </div>
-    </div>
-    
+    <div class="welcome" style="width:500px ; float :right ; padding-left:60px">
+        <h1>SELAMAT DATANG DI <b>DESANET!</b></h1>
+        <h2>Website Resmi Desa Sumber Brantas</h2>
+        <h3>Kec. Bumiaji, Kota Batu, Jawa Timur</h3>
   
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-        <img src="images/desa1.jpg" class="card-img-right" alt="foto pesona desa">
-          <strong class="d-inline-block mb-2 text-success">Berita Terkini</strong>
-          <h3 class="mb-0">Anak Ayam Pak RT Hilang</h3>
-          <div class="mb-1 text-muted">Juni 12</div>
-          <p class="mb-auto">Diduga pelaku kejahatan memiliki dendam terhadap Pak RT karena tidak RW.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
+        <div class="isi">
+        <?= ambil_deskripsi('12'); ?>
         </div>
-      </div>
     </div>
 
+<div class="middle">
+  
+  <div class="visimisi" style="width: 800px ; float: left ; margin-left: 0%">
+    <h1>VISI DAN MISI</h1>
+    <br><b>VISI</b>
+    <?= ambil_visi('12'); ?>
+    <b><br>MISI</b>
+    <?= ambil_misi('12'); ?>
+  </div>
+
+  
+
+  <div class="border" style="width: 300px ; float:left ; margin-left:4%">
+    <h1>Profil Sumber Brantas</h1>
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item"> <a href="1-1-sejarah.php">Sejarah Desa Sumber Brantas</a></li>
+      <li class="list-group-item"> <a href="1-2-geo.php">Kondisi Geografis Desa</a></li>
+      <li class="list-group-item"> <a href="1-3-potensi.php">Potensi Desa</a></li>
+      <li class="list-group-item"> <a href="1-4-snp.php">Sarana dan Prasarana</a></li>
+      </ul>
+    </div>
+    <h1>Pos Terbaru</h1>
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">    
+      <li class="list-group-item"> <a href="#">Mantan Kades 2000-2012 Wafat</a></li>
+      <li class="list-group-item"> <a href="#">Vaksinasi Dosis Pertama di Pendopo Balai Desa</a></li>
+      <li class="list-group-item"> <a href="#">Bantuan Sembako dari Kecamatan</a></li>
+      <li class="list-group-item"> <a href="#">BLT DD Tahap 8 disalurkan hari ini</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
+</div>
+      
+ 
 
-  </body>
+  <div style="margin-top:90%">
+  <footer class="text-center text-lg-start bg-dark text-muted">
+
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+  </section>
+
+  <section class="">
+    <div class="container text-left text-md-start mt-5">
+      
+      <div class="row mt-3">
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>DESA SUMBER BRANTAS
+          </h6>
+          <p>
+          Sumber Brantas, Kecamatan Bumiaji, Kota Batu, Provinsi Jawa Timur, Kode Pos 65336.
+          </p>
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <h6 class="text-uppercase fw-bold mb-4">
+            Menu Utama
+          </h6>
+          <p>
+            <a href="1-beranda.php" class="text-reset">Beranda</a>
+          </p>
+          <p>
+            <a href="2-kegiatan.php" class="text-reset">Kegiatan</a>
+          </p>
+          <p>
+            <a href="3-0-datadesa.php" class="text-reset">Data Desa</a>
+          </p>
+          <p>
+            <a href="4-berita.php" class="text-reset">Berita Terkini</a>
+          </p>
+          <p>
+            <a href="5-surat.php" class="text-reset">Layanan Surat</a>
+          </p>
+        </div>
+     
+
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <h6 class="text-uppercase fw-bold mb-4">
+            Info Terbaru
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Pembagian RASKIN</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Persiapan Idul Adha</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Perbaruan Data Desa</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Realisasi APB Desa Tahun 2022</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Pelantikan Anggota BPD</a>
+          </p>
+        </div>
+  
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+          <h6 class="text-uppercase fw-bold mb-4">
+            Hubungi Kami
+          </h6>
+          <p><i class="fas fa-home me-3"></i>Jl. Raya Sumber Brantas No.120-124</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            desanet@sumberbrantas.id
+          <p><i class="fas fa-phone me-3"></i> WhatsApp +62 896 0337 8809</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold" href="1-beranda.php">Desanet.com</a>
+  </div>
+</footer>
+
+  </div>
+
+</body>
+  <script src="js/bootstrap.js"></script>
 </html>

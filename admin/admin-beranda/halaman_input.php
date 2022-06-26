@@ -1,33 +1,13 @@
-<?php include("inc_header.php") ?>
+<?php include("../inc/inc_header.php") ?>
 
 <?php 
 	$deskripsi	="";
 	$visi		="";
 	$misi		="";
+	$artikel_1	="";
+	$artikel_2	="";
 	$eror		="";
 	$sukses		="";
-	
-	// START CREATE LOGIC
-	if (isset($_POST['simpan'])) {
-		$deskripsi	= htmlspecialchars($_POST['deskripsi']);
-		$visi		= htmlspecialchars($_POST['visi']);
-		$misi		= htmlspecialchars($_POST['misi']);
-
-		if ($deskripsi == '' or $misi == '' or $visi == '') {
-			$eror		= "Silahkan masukan semua data yakni data isi dan deskripsi";
-		}
-
-		if (empty($eror)) {
-			$query	 	= "INSERT INTO halaman (deskripsi, visi, misi) VALUES ('$deskripsi', '$visi', '$misi')";
-			$result 	= mysqli_query(connection(),$query);
-
-			if ($result) {
-				$sukses = "Sukses memasukan data!!";
-			} else {
-				$eror	= "Gagal masukkan data!!";
-			}
-		}
-	} // END CREATE LOGIC
 
 	// START UPDATE LOGIC
 	if (isset($_GET['id'])) {
@@ -42,10 +22,45 @@
 		$data 	= mysqli_fetch_array($result);
 
 		$deskripsi = $data['deskripsi'];
-		$visi = $data['visi'];
-		$misi = $data['misi'];
+		$visi 		= $data['visi'];
+		$misi 		= $data['misi'];
+		$artikel_1	=$data['artikel_1'];
+		$artikel_2	=$data['artikel_2'];
+
+		if ($deskripsi == '' or $misi == '' or $visi == '') {
+			$eror		= "Data tidak ditemukan";
+		}
+		
 	} // END UPDATE LOGIC
 
+	// START CREATE LOGIC
+	if (isset($_POST['simpan'])) {
+		$deskripsi	= ($_POST['deskripsi']);
+		$visi		= ($_POST['visi']);
+		$misi		= ($_POST['misi']);
+		$artikel_1	= ($_POST['artikel_1']);
+		$artikel_2	= ($_POST['artikel_2']);
+
+		if ($deskripsi == '' or $misi == '' or $visi == '') {
+			$eror		= "Silahkan masukan semua data yakni data isi dan deskripsi";
+		}
+
+		if (empty($eror)) 
+		{
+			if($id != ""){
+				$query	 	= "UPDATE halaman SET deskripsi = '$deskripsi', visi = '$visi', misi = '$misi', artikel_1 = '$artikel_1', artikel_2 = '$artikel_2', tgl_isi = now() WHERE id = '$id'";
+			}else{
+				$query	 	= "INSERT INTO halaman (deskripsi, visi, misi, artikel_1, artikel_2) VALUES ('$deskripsi', '$visi', '$misi', '$artikel_1', '$artikel_2')";
+			}
+			$result 	= mysqli_query(connection(),$query);
+
+			if ($result) {
+				$sukses = "Sukses memasukan data!!";
+			} else {
+				$eror	= "Gagal masukkan data!!";
+			}
+		}
+	} // END CREATE LOGIC
  ?>
 <h1>Halaman Admin Input Data</h1>
 <div class="mb-3 row">
@@ -80,14 +95,14 @@
 	  <div class="mb-3 row">
 	    <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control summernote" id="deskripsi" value="<?php echo $deskripsi ?>" name="deskripsi">
+	      <textarea type="text" class="form-control summernote" id="deskripsi" value="" name="deskripsi"><?php echo $deskripsi ?></textarea>
 	    </div>
 	  </div>
 
 	  <div class="mb-3 row">
 	    <label for="visi" class="col-sm-2 col-form-label">Visi</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control summernote" id="visi" value="<?php echo $visi ?>" name="visi">
+	      <textarea type="text" class="form-control summernote" id="visi" value="" name="visi"><?php echo $visi ?></textarea>
 	    </div>
 	  </div>
 
@@ -99,6 +114,20 @@
 	  </div>
 
 	  <div class="mb-3 row">
+	    <label for="misi" class="col-sm-2 col-form-label">Artikel Pertama</label>
+	    <div class="col-sm-10">
+	      <textarea name="artikel_1" class="form-control summernote" id="artikel_1"><?php echo $artikel_1 ?></textarea>
+	    </div>
+	  </div>
+
+	  <div class="mb-3 row">
+	    <label for="misi" class="col-sm-2 col-form-label">Artikel Kedua</label>
+	    <div class="col-sm-10">
+	      <textarea name="artikel_2" class="form-control summernote" id="artikel_2"><?php echo $artikel_2 ?></textarea>
+	    </div>
+	  </div>
+
+	  <div class="mb-3 row">
 	    <div class="col-sm-2"></div>
 	    <div class="col-sm-10">
 	      <input type="submit" name="simpan" value="Simpan Data" class="btn btn-primary">
@@ -106,4 +135,4 @@
 	  </div>
 
 </form>
-<?php include("inc_footer.php") ?>
+<?php include("../inc/inc_footer.php") ?>

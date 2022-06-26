@@ -1,13 +1,13 @@
 <?php
-$files = array_filter(glob('../gambar/*'), 'is_file');
+	$files = array_filter(glob('../gambar/*'), 'is_file');
 
-$response = [];
+	$response = [];
 
-foreach ($files as $file) {
-	$response[] = basename($file);
-}
+	foreach ($files as $file) {
+		$response[] = basename($file);
+	}
 
-header('Content-Type: application/json');
-echo json_encode($response);
-die();
+	header('Content-Type: application/json');
+	echo json_encode($response);
+	die();
 ?>

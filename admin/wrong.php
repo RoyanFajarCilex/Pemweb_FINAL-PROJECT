@@ -10,6 +10,6 @@
   echo "DATA TIDAK DITEMUKAN";
   echo"<br>";
 ?>
-  <button type="submit" name="formmasuk" ><a href="admin-beranda/loginadmin.php"> BACK </button>
+  <button type="submit" name="formmasuk" ><a href="../0-masukadmin.php"> BACK </button>
 </body>
 </html>

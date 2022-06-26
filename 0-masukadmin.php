@@ -1,8 +1,6 @@
 <?php  
   session_start();
-  include_once ("inc_koneksi.php");
-
-
+  require_once("admin/inc/inc_koneksi.php");
 ?>
 
 <!DOCTYPE html>
@@ -39,13 +37,12 @@
       $qry = mysqli_query(connection(), "SELECT * FROM loginadmin WHERE username = '$username' AND password = md5('$password')");
       $cek = mysqli_num_rows($qry);
         if ($cek==1) {
-          $_SESSION["loginadmin"]=true;
-          $_SESSION["adminuser"]=$username;
-          header("location: halaman_admin.php");
+          $_SESSION['userweb']=$username;
+          header("location: admin/admin-beranda/halaman.php");
           exit;
         }
         else{
-          header("location: ../wrong.php");
+          header("location: admin/wrong.php");
         }
     }
 

@@ -1,3 +1,8 @@
+<?php  
+  session_start();
+  require_once("admin/inc/inc_koneksi.php");
+  require_once("admin/inc/inc_function.php");
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -57,38 +62,14 @@
           </div>
       <div class="struktur">
         <center>
-          <img src="images/struktur.png" alt="struktur pemerintah desa">
+          <!-- <img src="images/struktur.png" alt="struktur pemerintah desa"> -->
+          
+          <img src="<?= url_dasar()."/images/".struktur_gambar('5')?>" alt="struktur pemerintah desa">
         </center>
       </div>
 
       <div class="definisi">
-        <h3>1. Kepala Desa</h3>
-        <p>Menurut UU RI No 6 Tahun 2014 Pasal 1 Ayat 3 kepala desa adalah pemerintahan desa atau yang disebut dengan nama lain yang dibantu perangkat desa sebagai unsur penyelenggara pemerintahan desa. Bertugas untuk menyelenggarakan pemerintah dan pemberdayaan desa.</p>  
-
-        <h3>2. Badan Pemerintahan Desa (BPD)</h3>
-        <p>Badan pemerintahan desa adalah lembaga yang anggotanya merupakan wakil dari penduduk desa yang ditetapkan secara demokratis berdasarkan kewilayahan. Fungsi dari BPD adalah membahas dan menyepakati rencana peraturan desa bersama kepala desa, menampung dan menyalurkan aspirasi dari masyarakat, dan mengawasi kinerja kepala desa.</p>
-
-        <h3>3. Sekretaris Desa</h3>
-        <p>Sekretaris desa adalah perangkat yang membantu kepala desa menjalankan tugasnya. Fungsi sekretaris meliputi menyiapkan dan melaksanakan pengelolaan administrasi desa, membantu persiapan penyusunan peraturan desa dan bahan untuk laporan penyelenggara pemerintah desa serta melaksanakan tugas lain yang diberikan kepala desa.</p>
-
-        <h3>4. Pelaksana Teknis Desa</h3>
-        <ul>
-          <li>Kepala Urusan Pemerintah</li>
-          <p>Bertugas untuk membantu kepala desa dalam mengelola administrasi dan perumusan bahan kebijakan desa. Berfungsi melaksanakan kegiatan berkaitan dengan kependudukan, pertanahan, pembinaan ketentraman, dan ketertiban masyarakat.</p>
-
-          <li>Kepala Urusan Pembangunan</li>
-          <p>Bertugas untuk membantu kepala desa dalam menyiapkan teknis pengembangan ekonomi desa serta mengelola administrasi pembangunan dan layanan masyarakat. Berfungsi untuk melaksanakan kegiatan administrasi pembangunan, menyiapkan analisa dan kajian perkembangan ekonomi masyarakat serta mengelola tugas pembantuan.</p>
-
-          <li>Kepala Urusan Kesejahteraan Rakyat</li>
-          <p>Bertugas membantu kepala desa mempersiapkan perumusan kebijakan teknis penyusunan program keagamaan dan melaksanakan program pemberdayaan dan sosial kemasyarakatan. Berfungsi melaksanakan hasil persiapan program keagamaan, pemberdayaan masyarakat dan sosial kemasyarakatan.</p>
-
-          <li>Kepala Urusan Keuangan</li>
-          <p>Berfungsi untuk membantu sekretaris desa mengelola sumber pendapatan, administrasi keuangan, penyusunan APB desa dan laporan keuangan desa. Serta melakukan tugas lain yang diberikan sekretaris.</p>
-
-          <li>Kepala Urusan Umum</li>
-          <p>Fungsinya untuk membantu sekretaris dalam mengelola arsip desa, inventaris kekayan desa, dan administrasi umum. Dan juga sebagai penyedia, pemelihara dan perbaikan peralatan kantor. Serta pelaksana tugas lain yang diberikan oleh sekretaris desa.</p>
-        </ul>
-
+        <?= struktur('5')?>
       </div>
 
 

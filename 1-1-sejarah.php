@@ -1,3 +1,9 @@
+<?php  
+  session_start();
+  require_once("admin/inc/inc_koneksi.php");
+  require_once("admin/inc/inc_function.php");
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -83,7 +89,7 @@
         <h3>Kec. Bumiaji, Kota Batu, Jawa Timur</h3>
   
         <div class="isi">
-        Sumber Brantas adalah sebuah kelurahan di wilayah Kecamatan Bumiaji, Kota Batu, Provinsi Jawa Timur. Di desa ini terdapat mata air Sungai Brantas yang merupakan sungai terpanjang kedua di Pulau Jawa setelah Bengawan Solo. Mata air tersebut terletak di lereng Gunung Arjuno dan kawasan Taman Hutan Raya Raden Soerjo dimana di dalamnya juga terdapat bumi perkemahan dan pemandian air panas Cangar. Di sekitar mata air panas Cangar terdapat gua-gua buatan yang dibangun pada masa pendudukan Jepang. Pertanian hortikultura merupakan hasil utama dari desa ini. 
+        <?= ambil_deskripsi('12'); ?>
         </div>
     </div>
 
@@ -92,19 +98,9 @@
   <div class="visimisi" style="width: 800px ; float: left ; margin-left: 0%">
     <h1>VISI DAN MISI</h1>
     <br><b>VISI</b>
-    <br>“DENGAN SEMANGAT PERSAUDARAAN, GOTONG ROYONG DAN AKHLAK MULIA GUNA MEWUJUDKAN DESA SUMBER BRANTAS YANG LUAR BIASA”.
-    <br>
+    <?= ambil_visi('12'); ?>
     <b><br>MISI</b>
-    <br>Untuk mewujudkan Visi, Misi yang akan dilakukan adalah sebagai berikut :
-    Melanjutkan program yang telah dilaksanakan dan memelihara program-program yang sudah dilaksanakan oleh pemerintah Desa Sumber Brantas periode yang lalu sesuai dengan fungsinya.
-    Menggali, memberdayakan serta memaksimalkan semua potensi yang ada di masyarakat, meliputi :
-    <li>Pemberdayaan Sumber Daya Manusia (SDM)</li>
-    <li>Sumber Daya Alam (SDA)</li>
-    <li>Pemberdayaan Ekonomi Kerakyatan</li>
-    <br>Menciptakan kondisi masyarakat Desa Sumber Brantas yang aman, tertib, guyub dan rukun dalam kehidupan bermasyarakat. Optimalisasi penyelenggaraan pemerintah Desa Sumber Brantas yang meliputi :
-    <li>Penyelenggaraan pemerintahan yang Tertib dan Transparan</li>
-    <li>Pelayanan kepada masyarakat yang prima, yaitu : Cepat, Tepat dan Benar</li>
-    <li>Pelaksanaan pembangunan yang berkesinambungan dan mengedepankan partisipasi dan gotong royong masyarakat.</li>
+    <?= ambil_misi('12'); ?>
   </div>
 
   
