@@ -15,6 +15,12 @@
 			}
 			if($op == 'delete'){
 				$id = $_GET['id'];
+				$query	= "SELECT gambar FROM halaman WHERE id = '$id'";
+				$result	= mysqli_query(connection(), $query);
+				$data	= mysqli_fetch_array($result);
+				@unlink("../../images/".$data['gambar']);
+
+				$id = $_GET['id'];
 				$query = "DELETE FROM halaman WHERE id = '$id'";
 				$result = mysqli_query(connection(), $query);
 				
@@ -57,6 +63,7 @@
 			<thead>
 				<tr>
 					<th class="col-1">#</th>
+					<th class="col-2">Gambar</th>
 					<th>Deskripsi</th>
 					<th>Visi</th>
 					<th>Misi</th>
@@ -87,6 +94,7 @@
 					?>
 						<tr>
 							<td><?php echo $number++ ?></td>
+							<td><img src="../../images/<?php echo gambar($data['id']) ?>" style="max-width: 100px; max-height: 100px;"></td>
 							<td><?php echo $data['deskripsi'] ?></td>
 							<td><?php echo $data['visi'] ?></td>
 							<td><?php echo $data['misi'] ?></td>
