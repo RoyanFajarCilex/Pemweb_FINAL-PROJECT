@@ -15,10 +15,10 @@
 			}
 			if($op == 'delete'){
 				$id = $_GET['id'];
-				// $query	= "SELECT struktur_img FROM sinergi WHERE id = '$id'";
-				// $result	= mysqli_query(connection(), $query);
-				// $data	= mysqli_fetch_array($result);
-				// @unlink("../../images/".$data['stuktur_img']);
+				$query	= "SELECT poster FROM sinergi WHERE id = '$id'";
+				$result	= mysqli_query(connection(), $query);
+				$data	= mysqli_fetch_array($result);
+				@unlink("../../images/".$data['poster']);
 
 				$query 	= "DELETE FROM sinergi WHERE id = '$id'";
 				$result = mysqli_query(connection(), $query);
@@ -44,7 +44,7 @@
 
 		<h1>Halaman Admin Struktur Desa</h1>
 		<p>
-			<a href="sinergi_input.php">
+			<a href="sinergi-input.php">
 				<input type="button" class="btn-primary" value="Buat Halaman Baru"/>
 			</a>
 		</p>
@@ -62,8 +62,8 @@
 			<thead>
 				<tr>
 					<th class="col-1">#</th>
-					<th class="col-2">Struktur Kepemimpinan</th>
-					<th>Deskripsi</th>
+					<th class="col-2">Poster</th>
+					<th>Program</th>
 					<th class="col-1">Aksi</th>
 				</tr>
 			</thead>
@@ -91,13 +91,15 @@
 					?>
 						<tr>
 							<td><?php echo $number++ ?></td>
-							<!-- <td><img src="../../images/<?php //echo struktur_gambar($data['id']) ?>" style="max-width: 100px; max-height: 100px;"></td> -->
-							<td><?php echo $data['deskripsi'] ?></td>
+							<td><img src="../../images/<?php echo poster($data['id']) ?>" style="max-width: 100px; max-height: 100px;"></td>
+							<td><?php echo $data['judul'] ?></td>
+							<td><?php echo $data['kutipan'] ?></td>
+							<td><?php echo $data['program'] ?></td>
 							<td>
 								<a href="sinergi.php?op=delete&id=<?php echo $data['id']; ?>" onclick="return confirm('Apakah anda yakin ?')"> 
 									<span class="badge bg-danger">Hapus</span>
 								</a>
-								<a href="sinergi_input.php?id=<?php echo $data['id']; ?>">
+								<a href="sinergi-input.php?id=<?php echo $data['id']; ?>">
 									<span class="badge bg-warning text-dark">Ubah</span>
 								</a>
 							</td>

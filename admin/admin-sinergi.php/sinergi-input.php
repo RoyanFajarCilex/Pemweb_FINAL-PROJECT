@@ -1,9 +1,11 @@
 <?php include("../inc/inc_header.php") ?>
 
 <?php
-$program_1		= "";
-$program_2		= "";
-$program_3		= "";
+$judul			= "";
+$kutipan		= "";
+$program		= "";
+$poster			= "";
+$poster_name	= "";
 
 $eror		= "";
 $sukses		= "";
@@ -20,33 +22,37 @@ if ($id != "") {
 	$result = mysqli_query(connection(), $query);
 	$data 	= mysqli_fetch_array($result);
 
-	$deskripsi = $data['deskripsi'];
-	$struktur_img = $data['struktur_img'];
+	$program = $data['program'];
+	$poster = $data['poster'];
+	$judul = $data['judul'];
+	$kutipan = $data['kutipan'];
 
-	if ($deskripsi == '') {
+	if ($program == '' or $judul == '' or $kutipan == '') {
 		$eror		= "Data tidak ditemukan";
 	}
 } // END UPDATE LOGIC
 
 // START CREATE LOGIC
 if (isset($_POST['simpan'])) {
-	$deskripsi	= ($_POST['deskripsi']);
+	$program		= ($_POST['program']);
+	$judul 			= ($_POST['judul']);
+	$kutipan 		= ($_POST['kutipan']);
 
-	if ($deskripsi == '') {
-		$eror		= "Silahkan masukan data yakni deskripsi";
+	if ($program == '' or $judul == '' or $kutipan == '') {
+		$eror		= "Silahkan masukan data yang belum diisi";
 	}
 
 	// START UPLOAD GAMBAR STRUKTUR
-	if ($_FILES['struktur_img']['name']) {
-		$image_name	= $_FILES['struktur_img']['name'];
-		$image_size	= $_FILES['struktur_img']['size'];
-		$image_file	= $_FILES['struktur_img']['tmp_name'];	//menyimpan temporary data yang di upload
+	if ($_FILES['poster']['name']) {
+		$poster_name	= $_FILES['poster']['name'];
+		$poster_size	= $_FILES['poster']['size'];
+		$poster_file	= $_FILES['poster']['tmp_name'];	//menyimpan temporary data yang di upload
 
 		// $detail_file	= pathinfo($image_name);
 		// $image_format	= $detail_file['extension'];
 
 		$format			= ['jpg', 'jpeg', 'png'];
-		$ekstensi		= explode('.', $image_name);
+		$ekstensi		= explode('.', $poster_name);
 		$ekstensi		= strtolower(end($ekstensi));
 
 		if(!in_array($ekstensi, $format))
@@ -54,33 +60,33 @@ if (isset($_POST['simpan'])) {
 			$eror	= "Format file yang diperbolehkan hanya JPG, JPEG, PNG, GIF";
 		}
 
-		if ($image_size > 1000000) {
+		if ($poster_size > 1000000) {
 			$eror	= "Ukuran file terlalu besar!";
 		}
 	}
 
 	if (empty($eror)) {
-		if("$image_name")
+		if("$poster_name")
 		{
 			$direktori	= "../../images";
 
 			// DELETE DATA IMAGE
-			@unlink($direktori."/$struktur_img");
+			@unlink($direktori."/$poster");
 
-			$image_name	= "struktur_".time()."_".$image_name;
-			move_uploaded_file($image_file, $direktori."/".$image_name);
+			$poster_name	= "struktur_".time()."_".$poster_name;
+			move_uploaded_file($poster_file, $direktori."/".$poster_name);
 
-			$struktur_img = $image_name;
+			$poster = $poster_name;
 		} else{
 			// MEMASUKKAN DARI DATA YANG SEBELUMNYA ADA
-			$image_name	= $struktur_img;	
+			$poster_name	= $poster;	
 		}
 		// END UPLOAD GAMBAR STRUKTUR
 
 		if ($id != "") {
-			$query	 	= "UPDATE sinergi SET deskripsi = '$deskripsi', struktur_img = '$image_name', tgl = now() WHERE id = '$id'";
+			$query	 	= "UPDATE sinergi SET poster = '$poster_name', judul = '$judul', kutipan = '$kutipan', program = '$program', tgl = now() WHERE id = '$id'";
 		} else {
-			$query	 	= "INSERT INTO sinergi (deskripsi, struktur_img) VALUES ('$deskripsi', '$image_name')";
+			$query	 	= "INSERT INTO sinergi (poster, judul, kutipan, program) VALUES ('$poster_name', '$judul', '$kutipan', '$program')";
 		}
 		$result 	= mysqli_query(connection(), $query);
 
@@ -95,7 +101,7 @@ if (isset($_POST['simpan'])) {
 <h1>Halaman Admin Input Data</h1>
 <div class="mb-3 row">
 	<a href="sinergi.php">
-		< < Kembali ke halaman Admin</a>
+		< < Kembal i ke halaman Admin</a>
 </div>
 
 <?php
@@ -124,22 +130,36 @@ if ($sukses) {
 <form action="" method="POST" enctype="multipart/form-data">
 
 	<div class="mb-3 row">
-		<label for="struktur_img" class="col-sm-2 col-form-label">Gambar Struktur</label>
+		<label for="poster" class="col-sm-2 col-form-label">Poster</label>
 		<div class="col-sm-10">
 			<?php
-				if($struktur_img)
+				if($poster)
 				{
-					echo "<img src='../../images/$struktur_img' style='max-width: 100px; max-height: 100px;'>";
+					echo "<img src='../../images/$poster' style='max-width: 100px; max-height: 100px;'>";
 				}
 			?>
-			<input type="file" class="form-control" id="struktur_img" name="struktur_img">
+			<input type="file" class="form-control" id="poster" name="poster">
 		</div>
 	</div>
 
 	<div class="mb-3 row">
-		<label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+		<label for="judul" class="col-sm-2 col-form-label">Judul Program</label>
 		<div class="col-sm-10">
-			<textarea type="text" class="form-control summernote" id="deskripsi" value="" name="deskripsi"><?php echo $deskripsi ?></textarea>
+			<input type="text" class="form-control" id="judul" value="<?php echo $judul ?>" name="judul">
+		</div>
+	</div>
+
+	<div class="mb-3 row">
+		<label for="kutipan" class="col-sm-2 col-form-label">Kutipan Judul Program</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="kutipan" value="<?php echo $kutipan ?>" name="kutipan">
+		</div>
+	</div>
+
+	<div class="mb-3 row">
+		<label for="program" class="col-sm-2 col-form-label">Program</label>
+		<div class="col-sm-10">
+			<textarea type="text" class="form-control summernote" id="program" value="" name="program"><?php echo $program ?></textarea>
 		</div>
 	</div>
 
