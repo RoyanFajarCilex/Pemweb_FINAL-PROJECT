@@ -41,6 +41,7 @@ function url_dasar()
 //     return $gambar_2;
 // }
 
+// START BAGIAN BERANDA
 function ambil_deskripsi($id)
 {
     connection();
@@ -74,6 +75,21 @@ function ambil_misi($id)
     return $misi;
 }
 
+function gambar($id){
+    connection();
+    $query          = "SELECT * FROM halaman WHERE id = '$id'";
+    $result         = mysqli_query(connection(), $query);
+    $data           = mysqli_fetch_array($result);
+    $gambar         = $data['gambar'];
+
+    if($gambar){
+        return $gambar;
+    } else {
+        return '';
+    }
+}
+//END BAGIAN BERANDA
+
 // untuk meringkas kata
 function max_kata($isi, $max)
 {
@@ -83,6 +99,7 @@ function max_kata($isi, $max)
     return $isi;
 }
 
+// BAGIAN STRUKTUR KEPEMIMPINAN
 function struktur($id){
     connection();
     $query      = "SELECT * FROM pemdas WHERE id = '$id'";
@@ -107,3 +124,64 @@ function struktur_gambar($id){
         return '';
     }
 }
+
+// BAGIAN STRUKTUR KEPEMIMPINAN
+
+// BAGIAN SINERGI 
+function judul($id){
+    connection();
+    $query      = "SELECT * FROM sinergi WHERE id = '$id'";
+    $result     = mysqli_query(connection(), $query);
+    $data       = mysqli_fetch_array($result);
+    $judul      = $data['judul'];
+
+
+    return $judul;
+}
+
+function kutipan($id){
+    connection();
+    $query      = "SELECT * FROM sinergi WHERE id = '$id'";
+    $result     = mysqli_query(connection(), $query);
+    $data       = mysqli_fetch_array($result);
+    $kutipan    = $data['kutipan'];
+
+
+    return $kutipan;
+}
+
+function program($id){
+    connection();
+    $query      = "SELECT * FROM sinergi WHERE id = '$id'";
+    $result     = mysqli_query(connection(), $query);
+    $data       = mysqli_fetch_array($result);
+    $program    = $data['program'];
+
+
+    return $program;
+}
+
+function waktu($id){
+    connection();
+    $query      = "SELECT * FROM sinergi WHERE id = '$id'";
+    $result     = mysqli_query(connection(), $query);
+    $data       = mysqli_fetch_array($result);
+    $tgl        = date('d-m-Y', strtotime($data['tgl']));
+
+    return $tgl;
+}
+
+function poster($id){
+    connection();
+    $query          = "SELECT * FROM sinergi WHERE id = '$id'";
+    $result         = mysqli_query(connection(), $query);
+    $data           = mysqli_fetch_array($result);
+    $poster         = $data['poster'];
+
+    if($poster){
+        return $poster;
+    } else {
+        return '';
+    }
+}
+// END SINERGI
